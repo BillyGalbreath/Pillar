@@ -1,0 +1,9 @@
+{
+  "projects": [
+    {
+      "name": "purpur",
+      "url": "https://ci.pl3x.net/job/Purpur",
+      "artifact": "final/purpurclip.jar"
+    }
+  ]
+}

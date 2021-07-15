@@ -1,0 +1,33 @@
+plugins {
+    id "com.github.johnrengelman.shadow" version "7.0.0"
+    id "java"
+}
+
+group = "net.pl3x.pillar"
+version = "1.0"
+
+sourceCompatibility = JavaVersion.VERSION_16
+targetCompatibility = JavaVersion.VERSION_16
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.json:json:20210307'
+}
+
+jar {
+    configure {
+        classifier = 'original'
+    }
+    dependsOn(shadowJar)
+    manifest.attributes("Main-Class": "net.pl3x.pillar.Main")
+}
+
+shadowJar {
+    configure {
+        classifier = null
+    }
+    archiveFileName = "${rootProject.name}-${project.version}.jar"
+}
