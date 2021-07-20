@@ -102,13 +102,16 @@ if ($project == null) {
 }
 
 function getLatest($json) {
-  $latest = 0;
+  $versions = [];
   foreach($json as $key => $value) {
-    if ($key > $latest) {
-      $latest = $key;
+    array_push($versions, $key);
+  }
+  rsort($versions);
+  foreach($versions as $version) {
+    if ($json[$version]["result"] == "SUCCESS") {
+      return $version;
     }
   }
-  return $latest;
 }
 
 function getJson() {
